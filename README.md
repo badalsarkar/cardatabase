@@ -8,6 +8,7 @@ usage of Spring Data JPA.
 - Spring WEB
 - Spring Data JPA
 - React
+- Spring Security
 
 ## Local setup
 
