@@ -1,0 +1,19 @@
+@startuml
+entity Car {
+    *id: Long <<Generated>>
+    --
+    brand: varchar
+    model: varchar
+    color: varchar
+    year: int
+    price: decimal
+    owner_id: Long <<FK>>
+}
+
+entity Owner {
+    *id: Long <<Generated>>
+    --
+    firstname: varchar
+    lastname: varchar
+}
+@enduml
