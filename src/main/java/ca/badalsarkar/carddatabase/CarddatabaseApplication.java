@@ -2,8 +2,10 @@ package ca.badalsarkar.carddatabase;
 
 import ca.badalsarkar.carddatabase.model.Car;
 import ca.badalsarkar.carddatabase.model.Owner;
+import ca.badalsarkar.carddatabase.model.Users;
 import ca.badalsarkar.carddatabase.repositories.CarRepositories;
 import ca.badalsarkar.carddatabase.repositories.OwnerRepository;
+import ca.badalsarkar.carddatabase.repositories.UserRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +23,8 @@ public class CarddatabaseApplication {
 	private CarRepositories carRepository;
 	@Autowired
 	private OwnerRepository ownerRepository;
+	@Autowired
+	private UserRepository userRepository;
 
 	public static void main(String[] args) {
 		SpringApplication.run(CarddatabaseApplication.class, args);
@@ -42,6 +46,10 @@ public class CarddatabaseApplication {
 					"SSJ-3002", 2014, 29000, owner1));
 			carRepository.save(new Car("Toyota", "Prius", "Silver",
 					"KKO-0212", 2018, 39000, owner2));
+
+			// creating user
+			userRepository.save(new Users("badalsarkar","123456","USER"));
+			userRepository.save(new Users("oni","654321","ADMIN"));
 		};
 	}
 
