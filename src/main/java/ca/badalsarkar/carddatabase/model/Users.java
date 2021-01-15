@@ -1,6 +1,6 @@
 package ca.badalsarkar.carddatabase.model;
 
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+//import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import javax.persistence.*;
 
@@ -26,7 +26,8 @@ public class Users {
     public Users(String username, String password, String role) {
         super();
         this.username = username;
-        this.password = new BCryptPasswordEncoder().encode(password);
+        //this.password = new BCryptPasswordEncoder().encode(password);
+        this.password = password;
         this.role = role;
     }
 
@@ -43,7 +44,9 @@ public class Users {
     }
 
     public void setPassword(String password) {
-        this.password = new BCryptPasswordEncoder().encode(password);
+
+        //this.password = new BCryptPasswordEncoder().encode(password);
+        this.password = password;
     }
 
     public String getRole() {

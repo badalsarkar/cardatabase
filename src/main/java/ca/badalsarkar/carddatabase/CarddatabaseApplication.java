@@ -13,6 +13,8 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @SpringBootApplication
 public class CarddatabaseApplication {
@@ -48,8 +50,8 @@ public class CarddatabaseApplication {
 					"KKO-0212", 2018, 39000, owner2));
 
 			// creating user
-			userRepository.save(new Users("badalsarkar","123456","USER"));
-			userRepository.save(new Users("oni","654321","ADMIN"));
+//			userRepository.save(new Users("badalsarkar","123456","USER"));
+//			userRepository.save(new Users("oni","654321","ADMIN"));
 		};
 	}
 
