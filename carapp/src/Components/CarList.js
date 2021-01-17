@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { SERVER_URL } from "../Constants";
+import BasicTable from "./Table";
 
 class CarList extends Component {
   constructor(props) {
@@ -6,8 +8,8 @@ class CarList extends Component {
     this.state = { cars: [] };
   }
 
-  componentDidMount() {
-    fetch("http://localhost:8080/api/cars")
+  fetchCars = () => {
+    fetch(SERVER_URL + "api/cars")
       .then((res) => res.json())
       .then((resData) => {
         this.setState({
@@ -15,26 +17,30 @@ class CarList extends Component {
         });
       })
       .catch((err) => console.error(err));
+  };
+
+  deleteCar = (id) => {};
+
+  componentDidMount() {
+    this.fetchCars();
   }
 
   render() {
-    const tableRows = this.state.cars.map((car, index) => {
-      return (
-        <tr key={index}>
-          <td>{car.brand}</td>
-          <td>{car.model}</td>
-          <td>{car.color}</td>
-          <td>{car.year}</td>
-          <td>{car.price}</td>
-        </tr>
-      );
-    });
+    //console.log(this.state.cars);
+    const columns = ["Brand", "Model", "Color", "Year", "Price $"];
+    const data = this.state.cars.map((c) => [
+      c.brand,
+      c.model,
+      c.color,
+      c.year,
+      c.price,
+      c._links,
+    ]);
+    //console.log(data);
 
     return (
       <div className="App">
-        <table>
-          <tbody>{tableRows}</tbody>
-        </table>
+        <BasicTable data={data} columns={columns} />
       </div>
     );
   }
